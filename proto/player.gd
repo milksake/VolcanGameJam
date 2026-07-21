@@ -1,11 +1,19 @@
 class_name Player
 extends CharacterBody3D
 
+@export var health : float = 100
+@export var invulnerability : float = 2
+
 @export var move_speed: float = 5.0
 @export var ease_speed: float = 5.0
 @export_range(0, 100, 0.01)
 var strength : float = 50.0
 @onready var camera_rig : CameraRig = $CameraRig as CameraRig
+
+var can_be_damaged = true
+
+func reset():
+	can_be_damaged = true
 
 func _physics_process(delta: float) -> void:
 	_handle_movement()
@@ -32,7 +40,11 @@ func _handle_movement() -> void:
 	var velocity_vector = input_dir * move_speed
 	velocity.x = velocity_vector.x
 	velocity.z = velocity_vector.z
-	move_and_slide()
+	if move_and_slide():
+		var c : KinematicCollision3D = get_last_slide_collision()
+		for i in range(c.get_collision_count()):
+			if (c.get_collider(i) is Enemy):
+				damage(c.get_collider(i).contact_damage)
 
 # Mouse
 func _handle_rotation(delta: float) -> void:
@@ -66,3 +78,10 @@ func _on_flashlight_body_entered(body: Node3D) -> void:
 func _on_flashlight_body_exited(body: Node3D) -> void:
 	if body.has_method("stop_damage"):
 		body.stop_damage()
+
+func damage(amount : float):
+	if can_be_damaged:
+		health -= amount
+		can_be_damaged = false
+		get_tree().create_timer(invulnerability).connect("timeout", reset)
+		print(health)

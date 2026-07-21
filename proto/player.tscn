@@ -15,6 +15,8 @@ radius = 3.8504395
 radius = 1.0190785
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_tatnj")
 move_speed = 20.0
 
