@@ -7,7 +7,7 @@ var health : float = 100
 @export
 var contact_damage : float = 10
 
-var rate : float = false
+var rate : float = 0
 
 func _process(delta: float) -> void:
 	health -= rate * delta
