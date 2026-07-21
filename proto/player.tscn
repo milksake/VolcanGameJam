@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://d13logem2wrqj"]
+
+[ext_resource type="Script" uid="uid://c2ftesyx3ll30" path="res://proto/player.gd" id="1_tatnj"]
+[ext_resource type="PackedScene" uid="uid://c184svic86bj2" path="res://proto/camera.tscn" id="2_db0nt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7u77a"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tatnj"]
+radius = 10.753771
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_db0nt"]
+radius = 3.8504395
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5okwe"]
+radius = 1.0190785
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_tatnj")
+move_speed = 20.0
+
+[node name="Body" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.020128, 0)
+sides = 16
+
+[node name="Beak" type="CSGBox3D" parent="."]
+transform = Transform3D(0.55359936, 0, 0, 0, 0.33874202, 0, 0, 0, 1, 0, 1.4096835, -0.41314787)
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.53, 0, 0, 0, 1.53, 0, 0, 0, 1.53, 0, 0.95863795, 0)
+shape = SubResource("CapsuleShape3D_7u77a")
+
+[node name="CameraRig" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_db0nt")]
+player = NodePath("..")
+
+[node name="Flashlight" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flashlight"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -22.605)
+shape = SubResource("SphereShape3D_tatnj")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Flashlight"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.1920929e-07, -7.5634193)
+shape = SubResource("SphereShape3D_db0nt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Flashlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.0917544)
+shape = SubResource("SphereShape3D_5okwe")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Flashlight"]
+light_color = Color(1, 1, 0.5686275, 1)
+light_energy = 15.0
+spot_range = 28.189741
+spot_angle = 25.60098
+
+[connection signal="body_entered" from="Flashlight" to="." method="_on_flashlight_body_entered"]
+[connection signal="body_exited" from="Flashlight" to="." method="_on_flashlight_body_exited"]

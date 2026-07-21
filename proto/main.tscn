@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cos5gi7etanvb"]
+
+[ext_resource type="PackedScene" uid="uid://d13logem2wrqj" path="res://proto/player.tscn" id="1_hdg1n"]
+[ext_resource type="PackedScene" uid="uid://ciotm1tvninlf" path="res://proto/enemy.tscn" id="2_kq3hk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u77a"]
+albedo_color = Color(9.62615e-08, 0.3437431, 0.5387993, 1)
+
+[node name="Main" type="Node3D"]
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(159.46626, 0, 0, 0, 0.109848976, 0, 0, 0, 159.46626, 0, -0.03935182, 0)
+material = SubResource("StandardMaterial3D_7u77a")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 0.54976654, 0.8353183, 0, -0.8353183, 0.54976654, 0, 9.144337, 0)
+light_energy = 0.1
+
+[node name="Column" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.107869, 1.9654582, 10.945772)
+use_collision = true
+size = Vector3(2, 4, 2)
+
+[node name="Column2" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1530323, 1.9654582, -13.636396)
+use_collision = true
+size = Vector3(2, 4, 2)
+
+[node name="Column3" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.500141, 1.9654582, 5.3566685)
+use_collision = true
+size = Vector3(2, 4, 2)
+
+[node name="Player" parent="." instance=ExtResource("1_hdg1n")]
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_kq3hk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 9.695838)
+move_speed = 5.0
+player = NodePath("../Player")
