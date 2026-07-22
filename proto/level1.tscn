@@ -10,7 +10,7 @@
 script = ExtResource("1_4w15y")
 wait_time = 3.0
 events = Array[int]([-5, -5, -5, 1, -5, 1, -5, 1, -5, 2, 3])
-text = Array[String](["Tutorial", "Tutorial 2", "Enemigo 1", "Enemigo 2", "Enemigo 3", "Good Luck"])
+text = Array[String](["Tutorial", "Tutorial 2", "Enemy 1", "Enemy 2", "Enemy 3", "Good Luck"])
 
 [node name="Environment" type="Node" parent="." unique_id=1373799267]
 

@@ -14,6 +14,7 @@ var bullet_scene : PackedScene = preload("res://proto/bullet.tscn")
 var moving : bool = false
 
 func _ready() -> void:
+	super._ready()
 	change_state()
 
 func _physics_process(_delta: float) -> void:

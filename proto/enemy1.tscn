@@ -30,4 +30,5 @@ shape = SubResource("CapsuleShape3D_l6lkr")
 [node name="ghost" parent="." unique_id=75790744 instance=ExtResource("2_8c886")]
 transform = Transform3D(-1.4699168, 0.030502, -0.29734448, -0.030568741, 1.4690058, 0.30180866, 0.29733768, 0.30181542, -1.4389226, 0.09010193, 0.19198534, -0.64759517)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1800729074]
+[node name="OmniLight3D" type="OmniLight3D" parent="ghost" unique_id=1800729074]
+transform = Transform3D(-0.65329653, -0.013586109, 0.13215005, 0.013556452, 0.6528912, 0.13414013, -0.13215314, 0.13413714, -0.639521, 0.14705135, -0.039698504, -0.42799583)
