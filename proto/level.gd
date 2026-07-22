@@ -16,6 +16,7 @@ var t := 0
 var enemies_remaining = 0
 
 func enemy_died():
+	print(enemies_remaining)
 	enemies_remaining -= 1
 	if not enemies_remaining:
 		next_event()
@@ -43,8 +44,8 @@ func next_event():
 			#print("\t",curr)
 			var s = spawners.get_child(curr)
 			s.visible = true
-			s.activate()
 			enemies_remaining = s.maxx
+			s.activate()
 			
 			curr += 1
 	

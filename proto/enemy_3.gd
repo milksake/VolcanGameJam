@@ -10,6 +10,7 @@ var moving : bool = false
 var repeat := 0
 
 func _ready() -> void:
+	super._ready()
 	change_state()
 
 func _physics_process(_delta: float) -> void:

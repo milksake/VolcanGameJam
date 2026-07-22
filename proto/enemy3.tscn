@@ -11,10 +11,11 @@ albedo_color = Color(0.88032085, 0.00038889647, 0.83003634, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6lkr"]
 height = 5.5944824
 
-[node name="Enemy3" type="CharacterBody3D" unique_id=51956182]
+[node name="Enemy3" type="CharacterBody3D" unique_id=51956182 node_paths=PackedStringArray("model")]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_ujdbk")
+model = NodePath("Moustrocon_alas")
 metadata/_custom_type_script = "uid://dafw6fg4eds8m"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=911263048]
@@ -29,6 +30,7 @@ shape = SubResource("CapsuleShape3D_l6lkr")
 [node name="Moustrocon_alas" parent="." unique_id=1669124168 instance=ExtResource("2_1auby")]
 transform = Transform3D(-2.5, 0, -3.774895e-07, -7.6115896e-08, 2.4486508, 0.5040928, 3.6973597e-07, 0.5040928, -2.4486508, 0.05969757, -1.1668639, -0.21679324)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2066360860]
+[node name="OmniLight3D" type="OmniLight3D" parent="Moustrocon_alas" unique_id=2066360860]
+transform = Transform3D(-0.4, -1.2178543e-08, 5.9157756e-08, -9.094946e-16, 0.3917841, 0.08065484, -6.0398314e-08, 0.08065484, -0.3917841, 0.023879025, 0.47464415, 0.009177074)
 light_color = Color(0.88235295, 0, 0.21568628, 1)
 light_energy = 5.0
