@@ -13,9 +13,13 @@ var strength : float = 50.0
 
 @export var ui : Control
 
-@export var energy_loosing_rate : float = 2
+@export var energy_loosing_rate : float = 10
+@export var energy_gaining_rate : float = 5
+
+var mat = preload("res://assets/Material.001.tres") as StandardMaterial3D
 
 var can_be_damaged = true
+var can_use_flash = true
 
 func _ready() -> void:
 	ui.call_deferred("change_energy", energy)
@@ -30,8 +34,20 @@ func _physics_process(delta: float) -> void:
 	_handle_clicking()
 
 func _process(delta: float) -> void:
-	energy -= energy_loosing_rate * delta
+	if flash.visible:
+		energy -= energy_loosing_rate * delta
+	else:
+		energy += energy_gaining_rate * delta
+	energy = clamp(energy, 0.0, 100.0)
 	ui.change_energy(energy)
+	
+	if energy <= 25:
+		can_use_flash = false
+	if energy >= 50:
+		can_use_flash = true
+	
+	if energy == 0:
+		get_tree().change_scene_to_file("res://proto/game_over.tscn")
 
 func get_input_direction() -> Vector3:
 	var input_dir = Vector3.ZERO
@@ -86,14 +102,18 @@ func _handle_rotation(delta: float) -> void:
 
 
 func _handle_clicking():
-	if Input.is_action_pressed("click"):
+	if can_use_flash and Input.is_action_pressed("click"):
 		flash.visible = true
-		#for shape in $Collision.get_children():
-			#if shape is CollisionShape3D:
-				#shape.disabled = true
+		mat.emission_enabled = true
+		for shape in flash.get_children():
+			if shape is CollisionShape3D:
+				shape.set_deferred("disabled", false)
 	else:
 		flash.visible = false
-	pass
+		mat.emission_enabled = false
+		for shape in flash.get_children():
+			if shape is CollisionShape3D:
+				shape.set_deferred("disabled", true)
 
 # Damage
 func _on_flashlight_body_entered(body: Node3D) -> void:
@@ -107,6 +127,14 @@ func _on_flashlight_body_exited(body: Node3D) -> void:
 func damage(amount : float):
 	if can_be_damaged:
 		energy -= amount
+		energy = clamp(energy, 0.0, 100.0)
+		if energy <= 25:
+			can_use_flash = false
+		if energy >= 50:
+			can_use_flash = true
 		can_be_damaged = false
 		get_tree().create_timer(invulnerability).connect("timeout", reset)
 		ui.change_energy(energy)
+		
+		if energy == 0:
+			get_tree().change_scene_to_file("res://proto/game_over.tscn")

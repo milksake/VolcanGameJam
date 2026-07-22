@@ -14,8 +14,12 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if moving:
-		look_at(player.position)
-		velocity = move_speed * (player.position - position).normalized()
+		var mod = player.position
+		mod.y = 2
+		look_at(mod)
+		var pos := (player.position - position)
+		pos.y = 0
+		velocity = move_speed * pos.normalized()
 	else:
 		repeat -= 1
 		if not repeat:
@@ -25,13 +29,18 @@ func _physics_process(_delta: float) -> void:
 func change_state():
 	if moving:
 		moving = false
-		var direction := (player.position - position).normalized()
+		var direction := (player.position - position)
+		direction.y = 0
+		direction = direction.normalized()
 		var target_position := direction * attack_distance
-		look_at(player.position)
+		var mod = player.position
+		mod.y = 2
+		look_at(mod)
 		velocity = direction * attack_speed
 		@warning_ignore("narrowing_conversion")
 		repeat = ((target_position.distance_to(position)-1) / attack_speed) + 1
 	
 	else:
 		moving = true
-		get_tree().create_timer(attack_rate).connect("timeout", change_state)
+		if is_inside_tree():
+			get_tree().create_timer(attack_rate).connect("timeout", change_state)

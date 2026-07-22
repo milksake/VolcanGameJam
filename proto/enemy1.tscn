@@ -9,10 +9,11 @@
 albedo_color = Color(0.99999994, 0.011651589, 0.13945028, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6lkr"]
+height = 4.109375
 
 [node name="Enemy1" type="CharacterBody3D" unique_id=1843927083 node_paths=PackedStringArray("model")]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_y6vsw")
 model = NodePath("ghost")
 metadata/_custom_type_script = "uid://dafw6fg4eds8m"
@@ -23,6 +24,7 @@ mesh = SubResource("CylinderMesh_j6034")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ku3s")
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=879379173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13964844, 0)
 shape = SubResource("CapsuleShape3D_l6lkr")
 
 [node name="ghost" parent="." unique_id=75790744 instance=ExtResource("2_8c886")]
