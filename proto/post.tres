@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://blbr1b266nu02"]
+
+[ext_resource type="Shader" uid="uid://cwed7bg4qw7il" path="res://proto/post.gdshader" id="1_cgnmp"]
+[ext_resource type="Texture2D" uid="uid://xs1ohjmlwcx7" path="res://assets/shader/palette_eeve.png" id="2_kp5o3"]
+[ext_resource type="Texture2D" uid="uid://bxltbtkbjs2a4" path="res://assets/shader/bayer8tile4.png" id="3_7m1ll"]
+
+[resource]
+shader = ExtResource("1_cgnmp")
+shader_parameter/u_dither_tex = ExtResource("3_7m1ll")
+shader_parameter/u_color_tex = ExtResource("2_kp5o3")
+shader_parameter/u_bit_depth = 32
+shader_parameter/u_contrast = 1.0
+shader_parameter/u_offset = 0.0
+shader_parameter/u_dither_size = 2

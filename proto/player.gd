@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody3D
 
-@export var health : float = 100
+@export var energy : float = 100
 @export var invulnerability : float = 2
 
 @export var move_speed: float = 5.0
@@ -9,8 +9,17 @@ extends CharacterBody3D
 @export_range(0, 100, 0.01)
 var strength : float = 50.0
 @onready var camera_rig : CameraRig = $CameraRig as CameraRig
+@onready var flash = $Flashlight
+
+@export var ui : Control
+
+@export var energy_loosing_rate : float = 2
 
 var can_be_damaged = true
+
+func _ready() -> void:
+	ui.call_deferred("change_energy", energy)
+	#ui.change_energy(energy)
 
 func reset():
 	can_be_damaged = true
@@ -18,6 +27,11 @@ func reset():
 func _physics_process(delta: float) -> void:
 	_handle_movement()
 	_handle_rotation(delta)
+	_handle_clicking()
+
+func _process(delta: float) -> void:
+	energy -= energy_loosing_rate * delta
+	ui.change_energy(energy)
 
 func get_input_direction() -> Vector3:
 	var input_dir = Vector3.ZERO
@@ -70,6 +84,17 @@ func _handle_rotation(delta: float) -> void:
 		var current_rot_y = rotation.y
 		rotation.y = lerp_angle(current_rot_y, target_rot_y, 1.0 - pow(0.001, delta * ease_speed))
 
+
+func _handle_clicking():
+	if Input.is_action_pressed("click"):
+		flash.visible = true
+		#for shape in $Collision.get_children():
+			#if shape is CollisionShape3D:
+				#shape.disabled = true
+	else:
+		flash.visible = false
+	pass
+
 # Damage
 func _on_flashlight_body_entered(body: Node3D) -> void:
 	if body.has_method("damage"):
@@ -81,7 +106,7 @@ func _on_flashlight_body_exited(body: Node3D) -> void:
 
 func damage(amount : float):
 	if can_be_damaged:
-		health -= amount
+		energy -= amount
 		can_be_damaged = false
 		get_tree().create_timer(invulnerability).connect("timeout", reset)
-		print(health)
+		ui.change_energy(energy)

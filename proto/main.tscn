@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://1our2td8llj3" path="res://proto/enemy2.tscn" id="3_qmg3b"]
 [ext_resource type="PackedScene" uid="uid://k7rewqkpurjp" path="res://proto/enemy3.tscn" id="4_8m4d7"]
 [ext_resource type="PackedScene" uid="uid://cwwrgvukaedyh" path="res://proto/spawner.tscn" id="5_i6phf"]
+[ext_resource type="PackedScene" uid="uid://0w7sr6vx3tdt" path="res://proto/game_ui.tscn" id="6_uotyt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u77a"]
 albedo_color = Color(9.62615e-08, 0.3437431, 0.5387993, 1)
@@ -39,8 +40,9 @@ use_collision = true
 collision_mask = 14
 size = Vector3(2, 4, 2)
 
-[node name="Player" parent="." unique_id=694626378 instance=ExtResource("1_hdg1n")]
+[node name="Player" parent="." unique_id=694626378 node_paths=PackedStringArray("ui") instance=ExtResource("1_hdg1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+ui = NodePath("../GameUI")
 
 [node name="Enemy1" parent="." unique_id=736959512 node_paths=PackedStringArray("player") instance=ExtResource("2_kq3hk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 15.651)
@@ -57,3 +59,5 @@ player = NodePath("../Player")
 [node name="Spawner" parent="." unique_id=1147721482 node_paths=PackedStringArray("player") instance=ExtResource("5_i6phf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 9.716)
 player = NodePath("../Player")
+
+[node name="GameUI" parent="." unique_id=1478730500 instance=ExtResource("6_uotyt")]

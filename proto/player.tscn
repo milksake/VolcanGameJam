@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2ftesyx3ll30" path="res://proto/player.gd" id="1_tatnj"]
 [ext_resource type="PackedScene" uid="uid://c184svic86bj2" path="res://proto/camera.tscn" id="2_db0nt"]
+[ext_resource type="PackedScene" uid="uid://cpxj4l58xk3hv" path="res://assets/robotPrincipal.glb" id="3_db0nt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7u77a"]
 
@@ -14,17 +15,13 @@ radius = 3.8504395
 [sub_resource type="SphereShape3D" id="SphereShape3D_5okwe"]
 radius = 1.0190785
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_sy5il"]
+
 [node name="Player" type="CharacterBody3D" unique_id=1213074160]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_tatnj")
 move_speed = 20.0
-
-[node name="Body" type="CSGCylinder3D" parent="." unique_id=918083753]
-sides = 16
-
-[node name="Beak" type="CSGBox3D" parent="." unique_id=1417852907]
-transform = Transform3D(0.55359936, 0, 0, 0, 0.33874202, 0, 0, 0, 1, 0, 0.4, -0.413)
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=177889775]
 transform = Transform3D(1.53, 0, 0, 0, 1.53, 0, 0, 0, 1.53, 0, 0, 0)
@@ -34,7 +31,7 @@ shape = SubResource("CapsuleShape3D_7u77a")
 player = NodePath("..")
 
 [node name="Flashlight" type="Area3D" parent="." unique_id=864022251]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38410914, 1.4658594, -1)
 collision_layer = 2
 collision_mask = 4
 
@@ -52,10 +49,17 @@ shape = SubResource("SphereShape3D_5okwe")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Flashlight" unique_id=297196586]
 light_color = Color(1, 1, 0.5686275, 1)
-light_energy = 15.0
+light_energy = 50.0
 shadow_enabled = true
 spot_range = 28.189741
 spot_angle = 25.60098
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Flashlight" unique_id=488453103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4299736)
+shape = SubResource("SphereShape3D_sy5il")
+
+[node name="robotPrincipal" parent="." unique_id=355519584 instance=ExtResource("3_db0nt")]
+transform = Transform3D(-0.6, 0, -9.059749e-08, 0, 0.6, 0, 9.059749e-08, 0, -0.6, 0, 0, 0)
 
 [connection signal="body_entered" from="Flashlight" to="." method="_on_flashlight_body_entered"]
 [connection signal="body_exited" from="Flashlight" to="." method="_on_flashlight_body_exited"]

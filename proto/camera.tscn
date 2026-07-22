@@ -2,16 +2,6 @@
 
 [ext_resource type="Script" uid="uid://da0d5a381fe5i" path="res://proto/camera_rig.gd" id="1_kql75"]
 [ext_resource type="Script" uid="uid://ddtvuyyqo2suy" path="res://proto/camera_debug.gd" id="2_j50n7"]
-[ext_resource type="Shader" uid="uid://cwed7bg4qw7il" path="res://proto/post.gdshader" id="2_kql75"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_j50n7"]
-size = Vector2(2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_prgvh"]
-render_priority = 0
-shader = ExtResource("2_kql75")
-shader_parameter/color_crush = 12.0
-shader_parameter/gamma = Vector2(2.2, 0.45)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjvhh"]
 albedo_color = Color(0.8493206, 0, 0.10647873, 1)
@@ -29,12 +19,6 @@ transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49
 fov = 60.0
 size = 15.0
 far = 500.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="OffsetRig/Camera3D" unique_id=1064566046]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_j50n7")
-surface_material_override/0 = SubResource("ShaderMaterial_prgvh")
 
 [node name="OffsetRigDebug" type="CSGCylinder3D" parent="OffsetRig" unique_id=911584634]
 transform = Transform3D(1, 0, 0, 0, 0.090245426, 0, 0, 0, 1, 0, 0.021585464, 0)

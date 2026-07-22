@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bnd2s2bxy06pi"]
+
+[ext_resource type="PackedScene" uid="uid://d13logem2wrqj" path="res://proto/player.tscn" id="1_6qfi1"]
+[ext_resource type="PackedScene" uid="uid://dfr3jcca6qwuf" path="res://proto/nivel_2.tscn" id="1_dsp0j"]
+[ext_resource type="PackedScene" uid="uid://0w7sr6vx3tdt" path="res://proto/game_ui.tscn" id="4_6qfi1"]
+[ext_resource type="PackedScene" uid="uid://cwwrgvukaedyh" path="res://proto/spawner.tscn" id="5_n1wdi"]
+
+[node name="Level1" type="Node3D" unique_id=1178329135]
+
+[node name="Environment" type="Node" parent="." unique_id=1373799267]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=397790893]
+transform = Transform3D(1, 0, 0, 0, 0.54976654, 0.8353183, 0, -0.8353183, 0.54976654, 0, 9.144337, 0)
+light_energy = 0.1
+
+[node name="NIVEL2CIUDAD" parent="Environment" unique_id=1858367797 instance=ExtResource("1_dsp0j")]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 12, 0)
+
+[node name="Player" parent="." unique_id=694626378 node_paths=PackedStringArray("ui") instance=ExtResource("1_6qfi1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+ui = NodePath("../GameUI")
+
+[node name="Spawner" parent="." unique_id=1147721482 node_paths=PackedStringArray("player") instance=ExtResource("5_n1wdi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 9.716)
+player = NodePath("../Player")
+
+[node name="GameUI" parent="." unique_id=1478730500 instance=ExtResource("4_6qfi1")]

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cqlnsh1sdrvts"]
+
+[ext_resource type="Shader" uid="uid://ctmxfkeeh6r0w" path="res://proto/post2.gdshader" id="1_tvs3t"]
+
+[resource]
+shader = ExtResource("1_tvs3t")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 3

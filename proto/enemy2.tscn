@@ -26,7 +26,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8ku3s")
 shape = SubResource("CapsuleShape3D_l6lkr")
 
 [node name="ROBOTFANTASMA2" parent="." unique_id=296813684 instance=ExtResource("2_wst6p")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1.2, 0, -1.8119498e-07, 0, 1.2, 0, 1.8119498e-07, 0, -1.2, 0, 0, 0)
 
 [node name="Gun" type="Node3D" parent="." unique_id=1750307452]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3486621, -0.58709323, -1.0484767)

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://0w7sr6vx3tdt"]
+
+[ext_resource type="Theme" uid="uid://3b6jfloh1m1l" path="res://assets/ui/black_and_white.tres" id="1_vpt24"]
+[ext_resource type="Script" uid="uid://cjqox2oj6ylyi" path="res://proto/game_ui.gd" id="2_o5j86"]
+[ext_resource type="Texture2D" uid="uid://cxaq1s7p1m63e" path="res://assets/ui/Icon's Pack.png" id="2_qtwjx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n24jy"]
+atlas = ExtResource("2_qtwjx")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv78k"]
+bg_color = Color(0.7176471, 0.60784316, 0.16862746, 1)
+
+[node name="GameUI" type="Control" unique_id=1478730500]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vpt24")
+script = ExtResource("2_o5j86")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1476828099]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -192.0
+offset_right = 828.0
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer" unique_id=1595661721]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=324966244]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=1688476793]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=60537940]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=2047079132]
+texture_filter = 1
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_n24jy")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=79867153]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Energy"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=312153216]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 15
+theme_override_styles/fill = SubResource("StyleBoxFlat_rv78k")
