@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciotm1tvninlf"]
+[gd_scene format=3 uid="uid://ciotm1tvninlf"]
 
 [ext_resource type="Script" uid="uid://dafw6fg4eds8m" path="res://proto/enemy.gd" id="1_8ku3s"]
 
@@ -9,14 +9,14 @@ albedo_color = Color(0.99999994, 0.011651589, 0.13945028, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6lkr"]
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Enemy" type="CharacterBody3D" unique_id=1658705280]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_8ku3s")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=739542962]
 mesh = SubResource("CylinderMesh_j6034")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ku3s")
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1642297991]
 shape = SubResource("CapsuleShape3D_l6lkr")

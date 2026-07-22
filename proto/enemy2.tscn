@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://1our2td8llj3"]
+[gd_scene format=3 uid="uid://1our2td8llj3"]
 
 [ext_resource type="Script" uid="uid://b72bph0bm5blu" path="res://proto/enemy_2.gd" id="1_ujdbk"]
+[ext_resource type="PackedScene" uid="uid://cejj1xne3xbbh" path="res://assets/ROBOTFANTASMA2.glb" id="2_wst6p"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_j6034"]
 
@@ -9,15 +10,25 @@ albedo_color = Color(0.9174694, 0.4187659, 5.7756904e-07, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6lkr"]
 
-[node name="Enemy2" type="CharacterBody3D"]
+[node name="Enemy2" type="CharacterBody3D" unique_id=217846934 node_paths=PackedStringArray("model")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_ujdbk")
+model = NodePath("ROBOTFANTASMA2")
 metadata/_custom_type_script = "uid://dafw6fg4eds8m"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1822778049]
+visible = false
 mesh = SubResource("CylinderMesh_j6034")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ku3s")
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1638601441]
 shape = SubResource("CapsuleShape3D_l6lkr")
+
+[node name="ROBOTFANTASMA2" parent="." unique_id=296813684 instance=ExtResource("2_wst6p")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Gun" type="Node3D" parent="." unique_id=1750307452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3486621, -0.58709323, -1.0484767)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1785577908]

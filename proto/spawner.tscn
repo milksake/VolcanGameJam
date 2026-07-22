@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cwwrgvukaedyh"]
+
+[ext_resource type="Script" uid="uid://ff668r3417um" path="res://proto/spawner.gd" id="1_ojuu0"]
+[ext_resource type="PackedScene" uid="uid://bjdo1exfi4ycs" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/effects/area/vfx_evil_area_01.tscn" id="2_3cb13"]
+
+[sub_resource type="Gradient" id="Gradient_iamll"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iamll"]
+gradient = SubResource("Gradient_iamll")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kafwy"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 1.0
+initial_velocity_max = 10.139999
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_iamll")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uotyt"]
+emission_enabled = true
+emission = Color(1, 0.22352941, 0.14117648, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i6phf"]
+material = SubResource("StandardMaterial3D_uotyt")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.2
+
+[node name="Spawner" type="Node3D" unique_id=1147721482]
+script = ExtResource("1_ojuu0")
+rate = 1.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1829161272]
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_kafwy")
+draw_pass_1 = SubResource("CylinderMesh_i6phf")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=991213563]
+light_color = Color(0.81249714, 0.14650637, 0.11033491, 1)
+light_energy = 10.0
+
+[node name="VFXEvilArea_01" parent="." unique_id=394797287 instance=ExtResource("2_3cb13")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -2, 0)

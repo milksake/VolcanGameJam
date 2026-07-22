@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://uk7qg6v5g64i"]
+[gd_scene format=3 uid="uid://uk7qg6v5g64i"]
 
 [ext_resource type="Script" uid="uid://tou1qxdad03c" path="res://proto/bullet.gd" id="1_2g5wb"]
+[ext_resource type="PackedScene" uid="uid://blyqnpqxi5xu6" path="res://assets/plasma.glb" id="2_pcgl4"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ou3by"]
 
@@ -9,14 +10,52 @@ albedo_color = Color(0.83313376, 0.43199545, 1.92523e-07, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2g5wb"]
 
-[node name="Bullet" type="CharacterBody3D"]
+[sub_resource type="Gradient" id="Gradient_pcgl4"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xvf3r"]
+gradient = SubResource("Gradient_pcgl4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sy5il"]
+lifetime_randomness = 0.2
+emission_shape_offset = Vector3(0, 0, 0.25)
+emission_shape = 1
+emission_sphere_radius = 0.75
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -1.0000023
+radial_accel_max = 1.9999977
+color_ramp = SubResource("GradientTexture1D_xvf3r")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcfry"]
+emission_enabled = true
+emission = Color(0.58431375, 0.85882354, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kafwy"]
+material = SubResource("StandardMaterial3D_xcfry")
+radius = 0.01
+height = 0.02
+
+[node name="Bullet" type="CharacterBody3D" unique_id=1670214399]
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_2g5wb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=924159120]
+visible = false
 mesh = SubResource("SphereMesh_ou3by")
 surface_material_override/0 = SubResource("StandardMaterial3D_2g5wb")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1061415606]
 shape = SubResource("SphereShape3D_2g5wb")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1895119874]
+
+[node name="plasma" parent="Node3D" unique_id=1978631037 instance=ExtResource("2_pcgl4")]
+transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Node3D" unique_id=913199608]
+light_color = Color(0.50980395, 1, 0.8666667, 1)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D" unique_id=486732036]
+process_material = SubResource("ParticleProcessMaterial_sy5il")
+draw_pass_1 = SubResource("SphereMesh_kafwy")

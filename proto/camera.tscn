@@ -10,8 +10,8 @@ size = Vector2(2, 2)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_prgvh"]
 render_priority = 0
 shader = ExtResource("2_kql75")
-shader_parameter/color_crush = 50.0
-shader_parameter/gamma = Vector2(5, 5)
+shader_parameter/color_crush = 12.0
+shader_parameter/gamma = Vector2(2.2, 0.45)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjvhh"]
 albedo_color = Color(0.8493206, 0, 0.10647873, 1)
@@ -32,6 +32,7 @@ far = 500.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="OffsetRig/Camera3D" unique_id=1064566046]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_j50n7")
 surface_material_override/0 = SubResource("ShaderMaterial_prgvh")
 

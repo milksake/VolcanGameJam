@@ -4,8 +4,10 @@ extends Enemy
 @export var attack_rate : float = 2.0
 @export var cooldown_rate : float = 2.0
 @export var player : Player
-@export var proyectile_speed : float = 7.5
+@export var proyectile_speed : float = 15
 @export var proyectile_damage : float = 5.0
+
+@onready var gun_position = $Gun
 
 var bullet_scene : PackedScene = preload("res://proto/bullet.tscn")
 
@@ -25,8 +27,10 @@ func change_state():
 		moving = false
 		
 		var b = bullet_scene.instantiate()
-		b.initialize(proyectile_speed * (player.position - position), proyectile_damage)
-		add_child(b)
+		var pos : Vector3 = (player.position - gun_position.global_position)
+		b.initialize(proyectile_speed * pos.normalized(), proyectile_damage)
+		b.look_at_from_position(gun_position.global_position, player.position)
+		get_parent().add_child(b)
 		
 		get_tree().create_timer(cooldown_rate).connect("timeout", change_state)
 	
