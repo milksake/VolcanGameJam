@@ -14,6 +14,8 @@ var start_position : Vector3
 var hover_height := 0.5
 var hover_speed := 2.5
 
+signal died
+
 var rate : float = 0
 
 func _ready() -> void:
@@ -22,6 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	health -= rate * delta
 	if (health <= 0):
+		emit_signal("died")
 		call_deferred("queue_free")
 	
 	if model:

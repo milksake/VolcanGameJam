@@ -8,7 +8,7 @@
 shader = ExtResource("1_cgnmp")
 shader_parameter/u_dither_tex = ExtResource("3_7m1ll")
 shader_parameter/u_color_tex = ExtResource("2_kp5o3")
-shader_parameter/u_bit_depth = 32
+shader_parameter/u_bit_depth = 64
 shader_parameter/u_contrast = 1.0
 shader_parameter/u_offset = 0.0
 shader_parameter/u_dither_size = 2

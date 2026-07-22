@@ -1,27 +1,129 @@
 [gd_scene format=3 uid="uid://dcttl8qyxcjn5"]
 
+[ext_resource type="Script" uid="uid://dgbgewq16idfv" path="res://proto/level.gd" id="1_4w15y"]
 [ext_resource type="PackedScene" uid="uid://d13logem2wrqj" path="res://proto/player.tscn" id="1_12h4k"]
 [ext_resource type="PackedScene" uid="uid://c0gre0su6a0a5" path="res://proto/nivel_1.tscn" id="1_gbwsd"]
 [ext_resource type="PackedScene" uid="uid://cwwrgvukaedyh" path="res://proto/spawner.tscn" id="5_itim4"]
 [ext_resource type="PackedScene" uid="uid://0w7sr6vx3tdt" path="res://proto/game_ui.tscn" id="6_k0oo8"]
 
 [node name="Level1" type="Node3D" unique_id=1178329135]
+script = ExtResource("1_4w15y")
+wait_time = 3.0
+events = Array[int]([-5, -5, -5, 1, -5, 1, -5, 1, -5, 2, 3])
+text = Array[String](["Tutorial", "Tutorial 2", "Enemigo 1", "Enemigo 2", "Enemigo 3", "Good Luck"])
 
 [node name="Environment" type="Node" parent="." unique_id=1373799267]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=397790893]
 transform = Transform3D(1, 0, 0, 0, 0.54976654, 0.8353183, 0, -0.8353183, 0.54976654, 0, 9.144337, 0)
-light_energy = 0.1
+light_energy = 0.5
 
 [node name="Nivel_1" parent="Environment" unique_id=202094263 instance=ExtResource("1_gbwsd")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment" unique_id=1507994658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.740656, 2.1137822, -27.11268)
+light_energy = 5.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Environment" unique_id=490015026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.919805, 2.58391, 0.35027826)
+light_energy = 5.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Environment" unique_id=542441277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.972554, 2.58391, -0.74933183)
+light_energy = 5.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Environment" unique_id=676308471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.052356, 2.388509, -46.93575)
+light_color = Color(1, 0.80784315, 0.23529412, 1)
+light_energy = 15.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Environment" unique_id=1032660213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.791658, 3.3553865, 66.40748)
+light_color = Color(1, 0.80784315, 0.23529412, 1)
+light_energy = 15.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Environment" unique_id=946105939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.590775, 3.5841732, 64.70503)
+light_color = Color(1, 0.80784315, 0.23529412, 1)
+light_energy = 15.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Environment" unique_id=1399551963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.740656, 2.1137822, -31.526289)
+light_energy = 5.0
+
 [node name="Player" parent="." unique_id=694626378 node_paths=PackedStringArray("ui") instance=ExtResource("1_12h4k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 ui = NodePath("../GameUI")
 
-[node name="Spawner" parent="." unique_id=1147721482 node_paths=PackedStringArray("player") instance=ExtResource("5_itim4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 9.716)
-player = NodePath("../Player")
-
 [node name="GameUI" parent="." unique_id=1478730500 instance=ExtResource("6_k0oo8")]
+
+[node name="Spawners" type="Node" parent="." unique_id=1514707398]
+
+[node name="Spawner" parent="Spawners" unique_id=1147721482 node_paths=PackedStringArray("player", "enemy_node", "level") instance=ExtResource("5_itim4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.605835, 2, -4.8495255)
+visible = false
+rate = 2.0
+frequency = Array[float]([1.0, 0.0, 0.0])
+player = NodePath("../../Player")
+enemy_node = NodePath("../../Enemies")
+level = NodePath("../..")
+
+[node name="Spawner2" parent="Spawners" unique_id=2076623293 node_paths=PackedStringArray("player", "enemy_node", "level") instance=ExtResource("5_itim4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.730976, 2, 21.996376)
+visible = false
+rate = 2.0
+frequency = Array[float]([0.0, 1.0, 0.0])
+player = NodePath("../../Player")
+enemy_node = NodePath("../../Enemies")
+level = NodePath("../..")
+
+[node name="Spawner3" parent="Spawners" unique_id=917178458 node_paths=PackedStringArray("player", "enemy_node", "level") instance=ExtResource("5_itim4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.07928, 2, 19.799124)
+visible = false
+rate = 2.0
+frequency = Array[float]([0.0, 0.0, 1.0])
+player = NodePath("../../Player")
+enemy_node = NodePath("../../Enemies")
+level = NodePath("../..")
+
+[node name="Spawner4" parent="Spawners" unique_id=1200018896 node_paths=PackedStringArray("player", "enemy_node", "level") instance=ExtResource("5_itim4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09154701, 2, 45.056545)
+visible = false
+rate = 2.0
+frequency = Array[float]([3.0, 2.0, 1.0])
+player = NodePath("../../Player")
+enemy_node = NodePath("../../Enemies")
+level = NodePath("../..")
+
+[node name="Spawner5" parent="Spawners" unique_id=1998189864 node_paths=PackedStringArray("player", "enemy_node", "level") instance=ExtResource("5_itim4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.071863, 2, 45.056545)
+visible = false
+rate = 2.0
+frequency = Array[float]([3.0, 2.0, 1.0])
+player = NodePath("../../Player")
+enemy_node = NodePath("../../Enemies")
+level = NodePath("../..")
+
+[node name="Spawner6" parent="Spawners" unique_id=1374252612 node_paths=PackedStringArray("player", "enemy_node", "level") instance=ExtResource("5_itim4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.908628, 2, 45.056545)
+visible = false
+player = NodePath("../../Player")
+enemy_node = NodePath("../../Enemies")
+level = NodePath("../..")
+
+[node name="Spawner7" parent="Spawners" unique_id=820318699 node_paths=PackedStringArray("player", "enemy_node", "level") instance=ExtResource("5_itim4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.550034, 2, 45.056545)
+visible = false
+player = NodePath("../../Player")
+enemy_node = NodePath("../../Enemies")
+level = NodePath("../..")
+
+[node name="Spawner8" parent="Spawners" unique_id=1057877553 node_paths=PackedStringArray("player", "enemy_node", "level") instance=ExtResource("5_itim4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.155437, 2, -4.7616615)
+visible = false
+maxx = 10
+player = NodePath("../../Player")
+enemy_node = NodePath("../../Enemies")
+level = NodePath("../..")
+
+[node name="Enemies" type="Node" parent="." unique_id=486084696]

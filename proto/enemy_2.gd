@@ -18,8 +18,12 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if moving:
-		look_at(player.position)
-		velocity = move_speed * (player.position - position).normalized()
+		var mod = player.position
+		mod.y = 2
+		look_at(mod)
+		var pos := (player.position - position)
+		pos.y = 0
+		velocity = move_speed * pos.normalized()
 		move_and_slide()
 
 func change_state():
@@ -28,12 +32,17 @@ func change_state():
 		
 		var b = bullet_scene.instantiate()
 		var pos : Vector3 = (player.position - gun_position.global_position)
+		pos.y = 0
 		b.initialize(proyectile_speed * pos.normalized(), proyectile_damage)
-		b.look_at_from_position(gun_position.global_position, player.position)
+		var mod = player.position
+		mod.y = 2
+		b.look_at_from_position(gun_position.global_position, mod)
 		get_parent().add_child(b)
 		
-		get_tree().create_timer(cooldown_rate).connect("timeout", change_state)
+		if is_inside_tree():
+			get_tree().create_timer(cooldown_rate).connect("timeout", change_state)
 	
 	else:
 		moving = true
-		get_tree().create_timer(attack_rate).connect("timeout", change_state)
+		if is_inside_tree():
+			get_tree().create_timer(attack_rate).connect("timeout", change_state)
