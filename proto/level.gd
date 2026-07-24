@@ -5,7 +5,7 @@ extends Node3D
 @onready var ui = $GameUI
 @export var wait_time : float = 5
 @export var events : Array[int]
-@export var text : Array[String]
+@export_multiline() var text : Array[String]
 @onready var enemy_node := $Enemies
 
 var ind := 0
@@ -28,7 +28,7 @@ func next_event():
 	
 	#print(ind)
 	if ind >= len(events):
-		get_tree().change_scene_to_file("res://proto/game_over.tscn")
+		get_tree().change_scene_to_file("res://menu/ESCENA/menu_primer_plano.tscn")
 		return
 	
 	await get_tree().create_timer(wait_time).timeout

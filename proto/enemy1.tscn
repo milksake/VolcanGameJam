@@ -15,6 +15,7 @@ height = 4.109375
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_y6vsw")
+health = 50.0
 model = NodePath("ghost")
 metadata/_custom_type_script = "uid://dafw6fg4eds8m"
 

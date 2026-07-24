@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://3e7h6mlrqcxh"]
+
+[ext_resource type="Script" uid="uid://b54aicxhox7yh" path="res://SCRIPTS/menu_primer_plano.gd" id="1_5phjl"]
+
+[sub_resource type="Gradient" id="Gradient_5rvfu"]
+offsets = PackedFloat32Array(0.001457726, 1)
+colors = PackedColorArray(0.039215688, 0.07058824, 0.1254902, 1, 0.105882354, 0.22745098, 0.36078432, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_no3j3"]
+gradient = SubResource("Gradient_5rvfu")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="Gradient" id="Gradient_dqcpw"]
+offsets = PackedFloat32Array(0, 0.38046646, 1)
+colors = PackedColorArray(1, 0.8862745, 0.2901961, 1, 0.49803922, 0.9137255, 0.9411765, 1, 0.49803922, 0.9137255, 0.9411765, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_42vin"]
+gradient = SubResource("Gradient_dqcpw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.6, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5f8tn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(400, 20, 1)
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 15.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, -20, 0)
+scale_min = 0.5
+scale_max = 1.5
+turbulence_enabled = true
+turbulence_noise_strength = 11.27
+turbulence_noise_scale = 7.952
+
+[sub_resource type="Gradient" id="Gradient_6fsu4"]
+offsets = PackedFloat32Array(0, 0.7623907, 0.7915452, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0.9694073, 1, 1, 1, 0.19607843)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5f8tn"]
+gradient = SubResource("Gradient_6fsu4")
+fill = 1
+fill_from = Vector2(0.5102389, 0.4556314)
+fill_to = Vector2(0.087030716, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evjhg"]
+bg_color = Color(0, 0, 0, 0.47058824)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.30980393, 0.81960785, 0.8784314, 0.3137255)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="Environment" id="Environment_nobxj"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 2.19
+glow_strength = 0.71
+glow_bloom = 0.2
+glow_blend_mode = 0
+glow_hdr_threshold = 0.33
+
+[node name="Menu_Primer_Plano" type="Control" unique_id=764538870]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5phjl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1775630993]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08297195, 0.16037118, 0.3455325, 1)
+
+[node name="Degradado" type="TextureRect" parent="ColorRect" unique_id=195970687]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_no3j3")
+
+[node name="Fantasmitas" type="GPUParticles2D" parent="ColorRect" unique_id=1503471257]
+position = Vector2(576, 650)
+texture = SubResource("GradientTexture2D_42vin")
+lifetime = 137.73999999999998
+preprocess = 2.64
+speed_scale = 19.87
+process_material = SubResource("ParticleProcessMaterial_5f8tn")
+
+[node name="TITULO" type="Label" parent="ColorRect" unique_id=83772253]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -393.5
+offset_top = -49.5
+offset_right = 393.5
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(2.4161108, 2.149733, 0.75354767, 1)
+theme_override_colors/font_outline_color = Color(0.039215688, 0.20784314, 0.2509804, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 86
+text = "THANKS FOR PLAYING!"
+horizontal_alignment = 1
+
+[node name="VIÑETA" type="TextureRect" parent="ColorRect" unique_id=383987651]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_5f8tn")
+
+[node name="Button" type="Button" parent="ColorRect" unique_id=1083888317]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -630.0
+offset_top = -183.0
+offset_right = -488.0
+offset_bottom = -152.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_evjhg")
+text = "MENU PRINCIPAL"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1939442145]
+environment = SubResource("Environment_nobxj")
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]

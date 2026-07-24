@@ -943,7 +943,7 @@ shape = SubResource("ConvexPolygonShape3D_vb0ra")
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="115" unique_id=1817960915]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1048901477]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243.08081, 0, 721.28406)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243.08081, 0, 622.698)
 shape = SubResource("BoxShape3D_sy5il")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1075921733]

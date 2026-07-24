@@ -9,6 +9,8 @@ var explosion_scene = preload("res://assets/BinbunVFX_Vol2/ExplosionFX/effects/g
 @export_range(0, 100, 0.01)
 var health : float = 100
 
+@onready var audio := AudioStreamPlayer3D.new()
+
 @export
 var contact_damage : float = 10
 @export
@@ -27,8 +29,11 @@ var rate : float = 0
 func _ready() -> void:
 	start_position = model.position
 	orb.emitting = false
-	orb.scale = Vector3.ONE * 0.2
+	orb.scale = Vector3.ONE * 0.15
 	model.add_child(orb)
+	audio.stream = load("res://assets/sfx/explosion.wav")
+	audio.volume_db = 10
+	add_child(audio)
 
 func _process(delta: float) -> void:
 	if has_died:
@@ -42,6 +47,7 @@ func _process(delta: float) -> void:
 		ex.play()
 		has_died = true
 		model.visible = false
+		audio.play()
 		await get_tree().create_timer(2).timeout
 		call_deferred("queue_free")
 	

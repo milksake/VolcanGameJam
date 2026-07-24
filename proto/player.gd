@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	if flash.visible:
 		energy -= energy_loosing_rate * delta
-	else:
+	elif can_be_damaged:
 		energy += energy_gaining_rate * delta
 	energy = clamp(energy, 0.0, 100.0)
 	ui.change_energy(energy)
@@ -103,12 +103,16 @@ func _handle_rotation(delta: float) -> void:
 
 func _handle_clicking():
 	if can_use_flash and Input.is_action_pressed("click"):
+		if not flash.visible:
+			$AudioStreamPlayer3D.play()
 		flash.visible = true
 		mat.emission_enabled = true
 		for shape in flash.get_children():
 			if shape is CollisionShape3D:
 				shape.set_deferred("disabled", false)
 	else:
+		if flash.visible:
+			$AudioStreamPlayer3D.play()
 		flash.visible = false
 		mat.emission_enabled = false
 		for shape in flash.get_children():
@@ -137,4 +141,4 @@ func damage(amount : float):
 		ui.change_energy(energy)
 		
 		if energy == 0:
-			get_tree().change_scene_to_file("res://proto/game_over.tscn")
+			get_tree().change_scene_to_file("res://menu/ESCENA/menu_primer_plano.tscn")

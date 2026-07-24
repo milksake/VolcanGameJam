@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b72bph0bm5blu" path="res://proto/enemy_2.gd" id="1_ujdbk"]
 [ext_resource type="PackedScene" uid="uid://cejj1xne3xbbh" path="res://assets/ROBOTFANTASMA2.glb" id="2_wst6p"]
+[ext_resource type="AudioStream" uid="uid://bfheki7eqibor" path="res://assets/sfx/laserShoot.wav" id="3_xy6ba"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_j6034"]
 
@@ -16,6 +17,8 @@ height = 7.262085
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_ujdbk")
+health = 75.0
+contact_damage = 15.0
 model = NodePath("ROBOTFANTASMA2")
 metadata/_custom_type_script = "uid://dafw6fg4eds8m"
 
@@ -37,3 +40,7 @@ light_color = Color(0.42745098, 1, 1, 1)
 
 [node name="Gun" type="Node3D" parent="." unique_id=1750307452]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3486621, -0.58709323, -1.0484767)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=575252085]
+stream = ExtResource("3_xy6ba")
+volume_db = 10.0

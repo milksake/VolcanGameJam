@@ -39,6 +39,7 @@ func change_state():
 		mod.y = 2
 		b.look_at_from_position(gun_position.global_position, mod)
 		get_parent().add_child(b)
+		$AudioStreamPlayer3D.play()
 		
 		if is_inside_tree():
 			get_tree().create_timer(cooldown_rate).connect("timeout", change_state)

@@ -1,0 +1,364 @@
+[gd_scene format=3 uid="uid://bsvuo5sw1ru5o"]
+
+[ext_resource type="Theme" uid="uid://3b6jfloh1m1l" path="res://assets/ui/black_and_white.tres" id="1_157ub"]
+[ext_resource type="Script" uid="uid://b54aicxhox7yh" path="res://menu/SCRIPTS/menu_primer_plano.gd" id="1_dqcpw"]
+[ext_resource type="Texture2D" uid="uid://dcty4r36612hv" path="res://menu/Historia2.png" id="3_74vw6"]
+
+[sub_resource type="Gradient" id="Gradient_dqcpw"]
+offsets = PackedFloat32Array(0, 0.38046646, 1)
+colors = PackedColorArray(1, 0.8862745, 0.2901961, 1, 0.49803922, 0.9137255, 0.9411765, 1, 0.49803922, 0.9137255, 0.9411765, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_42vin"]
+gradient = SubResource("Gradient_dqcpw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.6, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5f8tn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(400, 20, 1)
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 15.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, -20, 0)
+scale_min = 0.5
+scale_max = 1.5
+turbulence_enabled = true
+turbulence_noise_strength = 11.27
+turbulence_noise_scale = 7.952
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evjhg"]
+bg_color = Color(0, 0, 0, 0.47058824)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.30980393, 0.81960785, 0.8784314, 0.3137255)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="Gradient" id="Gradient_6fsu4"]
+offsets = PackedFloat32Array(0, 0.7623907, 0.7915452, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0.9694073, 1, 1, 1, 0.19607843)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5f8tn"]
+gradient = SubResource("Gradient_6fsu4")
+fill = 1
+fill_from = Vector2(0.5102389, 0.4556314)
+fill_to = Vector2(0.087030716, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqcpw"]
+bg_color = Color(0.039215688, 0.078431375, 0.1254902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.30980393, 0.81960785, 0.8784314, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.30980393, 0.81960785, 0.8784314, 0.3137255)
+shadow_size = 16
+
+[sub_resource type="Environment" id="Environment_nobxj"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 2.19
+glow_strength = 0.71
+glow_bloom = 0.2
+glow_blend_mode = 0
+glow_hdr_threshold = 0.33
+
+[node name="Menu_Primer_Plano" type="Control" unique_id=764538870]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_157ub")
+script = ExtResource("1_dqcpw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1775630993]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08297195, 0.16037118, 0.3455325, 1)
+
+[node name="Degradado" type="TextureRect" parent="ColorRect" unique_id=195970687]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_74vw6")
+expand_mode = 2
+
+[node name="Fantasmitas" type="GPUParticles2D" parent="ColorRect" unique_id=1503471257]
+position = Vector2(576, 650)
+texture = SubResource("GradientTexture2D_42vin")
+lifetime = 137.73999999999998
+preprocess = 2.64
+speed_scale = 19.87
+process_material = SubResource("ParticleProcessMaterial_5f8tn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1152279181]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.75
+offset_top = -121.5
+offset_right = 124.75
+offset_bottom = 121.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 27
+
+[node name="INICIO" type="Button" parent="ColorRect/VBoxContainer" unique_id=252392618]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9098039, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1.1638972, 0.96001136, 0.34382322, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_evjhg")
+text = "Play"
+
+[node name="AJUSTES" type="Button" parent="ColorRect/VBoxContainer" unique_id=740783531]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9098039, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1.1638972, 0.96001136, 0.34382322, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_evjhg")
+text = "AJUSTES"
+
+[node name="SALIR" type="Button" parent="ColorRect/VBoxContainer" unique_id=153266538]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9098039, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1.1638972, 0.96001136, 0.34382322, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_evjhg")
+text = "Quit"
+
+[node name="VIÑETA" type="TextureRect" parent="ColorRect" unique_id=383987651]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_5f8tn")
+
+[node name="CREDITOS" type="Button" parent="ColorRect" unique_id=803512884]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -241.0
+offset_top = -89.0
+offset_right = -46.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.9098039, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1.1638972, 0.96001136, 0.34382322, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_evjhg")
+text = "CREDITS"
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect" unique_id=1731999370]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -309.0
+offset_right = 309.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 200
+
+[node name="TITULO" type="Label" parent="ColorRect/MarginContainer" unique_id=83772253]
+layout_mode = 2
+theme_override_colors/font_color = Color(2.4161108, 2.149733, 0.75354767, 1)
+theme_override_colors/font_outline_color = Color(0.039215688, 0.20784314, 0.2509804, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 72
+text = "Remnants of Ruin"
+horizontal_alignment = 1
+
+[node name="PanelAjustes" type="CanvasLayer" parent="." unique_id=1864652371]
+visible = false
+
+[node name="Fondo" type="ColorRect" parent="PanelAjustes" unique_id=63544441]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="Ajustes" type="PanelContainer" parent="PanelAjustes/Fondo" unique_id=444045854]
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dqcpw")
+
+[node name="Contenido" type="VBoxContainer" parent="PanelAjustes/Fondo/Ajustes" unique_id=1495163076]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Título" type="Label" parent="PanelAjustes/Fondo/Ajustes/Contenido" unique_id=1648652419]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.698, 1.723, 1.723, 1)
+theme_override_font_sizes/font_size = 50
+text = "AJUSTES"
+
+[node name="Titulo_Musica" type="Label" parent="PanelAjustes/Fondo/Ajustes/Contenido" unique_id=1956973996]
+layout_mode = 2
+text = "VOLUMEN DE MUSICA
+"
+horizontal_alignment = 1
+
+[node name="SliderMúsica" type="HSlider" parent="PanelAjustes/Fondo/Ajustes/Contenido" unique_id=1680963223]
+self_modulate = Color(0.30980393, 0.81960785, 0.8784314, 1)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="Titulo_SoundFX" type="Label" parent="PanelAjustes/Fondo/Ajustes/Contenido" unique_id=1815297717]
+layout_mode = 2
+text = "VOLUMEN DE EFECTOS
+
+"
+horizontal_alignment = 1
+
+[node name="SliderSoundFX" type="HSlider" parent="PanelAjustes/Fondo/Ajustes/Contenido" unique_id=298830352]
+self_modulate = Color(0.30980393, 0.81960785, 0.8784314, 1)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="Espaciador" type="Control" parent="PanelAjustes/Fondo/Ajustes/Contenido" unique_id=87248497]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BotonVolver" type="Button" parent="PanelAjustes/Fondo/Ajustes/Contenido" unique_id=1301616490]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_evjhg")
+text = "VOLVER"
+
+[node name="Espaciador2" type="Control" parent="PanelAjustes/Fondo/Ajustes/Contenido" unique_id=410697305]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelCreditos" type="CanvasLayer" parent="." unique_id=1400198343]
+visible = false
+
+[node name="Fondo" type="ColorRect" parent="PanelCreditos" unique_id=180903941]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="Ajustes" type="PanelContainer" parent="PanelCreditos/Fondo" unique_id=223487504]
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dqcpw")
+
+[node name="Contenido" type="VBoxContainer" parent="PanelCreditos/Fondo/Ajustes" unique_id=1950005971]
+layout_mode = 2
+
+[node name="Título" type="Label" parent="PanelCreditos/Fondo/Ajustes/Contenido" unique_id=1660809958]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.698, 1.723, 1.723, 1)
+theme_override_font_sizes/font_size = 50
+text = " CREDITOS"
+
+[node name="BotonVolver1" type="Button" parent="PanelCreditos/Fondo/Ajustes/Contenido" unique_id=1653186522]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_evjhg")
+text = "VOLVER"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelCreditos/Fondo/Ajustes/Contenido" unique_id=1754912561]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9098039, 0.9843137, 1, 1)
+bbcode_enabled = true
+text = "[center][b]LEGACY GANG[/b][/center]
+
+[center]— EQUIPO —[/center]
+
+[b]José[/b] — Música, programación
+[b]Giovanni[/b] — Programación, diseño 3D
+[b]Alex[/b] — Diseño 3D
+[b]Mariana[/b] — Programación (Godot)
+[b]Ninoska[/b] — Arte 2D
+
+[center]— MÚSICA —[/center]
+Música original compuesta por José y Giovanni.
+Masterización y mezcla final: José.
+
+[center]— ARTE Y MODELOS 3D —[/center]
+Diseños originales por Alex.
+Modelos adicionales: Poly Pizza (poly.pizza).
+
+[center]— ARTE 2D —[/center]
+Ilustraciones por Ninoska.
+
+[center]Hecho con Godot Engine · 2026[/center]"
+fit_content = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1939442145]
+environment = SubResource("Environment_nobxj")
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/INICIO" to="." method="_on_inicio_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/AJUSTES" to="." method="_on_ajustes_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/SALIR" to="." method="_on_salir_pressed"]
+[connection signal="pressed" from="ColorRect/CREDITOS" to="." method="_on_creditos_pressed"]
+[connection signal="pressed" from="PanelAjustes/Fondo/Ajustes/Contenido/BotonVolver" to="." method="_on_boton_volver_pressed"]
+[connection signal="pressed" from="PanelCreditos/Fondo/Ajustes/Contenido/BotonVolver1" to="." method="_on_boton_volver_pressed"]
+[connection signal="pressed" from="PanelCreditos/Fondo/Ajustes/Contenido/BotonVolver1" to="." method="_on_boton_volver_1_pressed"]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c2ftesyx3ll30" path="res://proto/player.gd" id="1_tatnj"]
 [ext_resource type="PackedScene" uid="uid://c184svic86bj2" path="res://proto/camera.tscn" id="2_db0nt"]
 [ext_resource type="PackedScene" uid="uid://cpxj4l58xk3hv" path="res://assets/robotPrincipal.glb" id="3_db0nt"]
+[ext_resource type="AudioStream" uid="uid://cqr0l6ntf7qp6" path="res://assets/sfx/click.wav" id="4_5okwe"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7u77a"]
 height = 4.715576
@@ -65,6 +66,10 @@ transform = Transform3D(-0.6, 0, -9.059749e-08, 0, 0.6, 0, 9.059749e-08, 0, -0.6
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1075783487]
 light_color = Color(0.11485442, 0.46326923, 0.99999994, 1)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=292699787]
+stream = ExtResource("4_5okwe")
+volume_db = 10.0
 
 [connection signal="body_entered" from="Flashlight" to="." method="_on_flashlight_body_entered"]
 [connection signal="body_exited" from="Flashlight" to="." method="_on_flashlight_body_exited"]

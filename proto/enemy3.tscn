@@ -15,6 +15,7 @@ height = 5.5944824
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_ujdbk")
+contact_damage = 20.0
 model = NodePath("Moustrocon_alas")
 metadata/_custom_type_script = "uid://dafw6fg4eds8m"
 

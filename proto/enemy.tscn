@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ciotm1tvninlf"]
 
 [ext_resource type="Script" uid="uid://dafw6fg4eds8m" path="res://proto/enemy.gd" id="1_8ku3s"]
+[ext_resource type="AudioStream" uid="uid://bn78bn2j3glmg" path="res://assets/sfx/explosion.wav" id="2_l6lkr"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_j6034"]
 
@@ -20,3 +21,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8ku3s")
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1642297991]
 shape = SubResource("CapsuleShape3D_l6lkr")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=697674585]
+stream = ExtResource("2_l6lkr")
+volume_db = 10.0

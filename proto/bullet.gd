@@ -32,5 +32,6 @@ func _process(delta: float) -> void:
 		var e = ex.instantiate()
 		add_child(e)
 		b.visible = false
+		$AudioStreamPlayer3D.play()
 		
 		get_tree().create_timer(2).connect("timeout", die)

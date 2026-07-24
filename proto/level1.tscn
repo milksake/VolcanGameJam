@@ -4,13 +4,25 @@
 [ext_resource type="PackedScene" uid="uid://d13logem2wrqj" path="res://proto/player.tscn" id="1_12h4k"]
 [ext_resource type="PackedScene" uid="uid://c0gre0su6a0a5" path="res://proto/nivel_1.tscn" id="1_gbwsd"]
 [ext_resource type="PackedScene" uid="uid://cwwrgvukaedyh" path="res://proto/spawner.tscn" id="5_itim4"]
+[ext_resource type="AudioStream" uid="uid://cnlwms4glicbp" path="res://assets/music/ScenarioTheme.ogg" id="6_12h4k"]
 [ext_resource type="PackedScene" uid="uid://0w7sr6vx3tdt" path="res://proto/game_ui.tscn" id="6_k0oo8"]
 
 [node name="Level1" type="Node3D" unique_id=1178329135]
 script = ExtResource("1_4w15y")
 wait_time = 3.0
-events = Array[int]([-5, -5, -5, 1, -5, 1, -5, 1, -5, 2, 3])
-text = Array[String](["Tutorial", "Tutorial 2", "Enemy 1", "Enemy 2", "Enemy 3", "Good Luck"])
+events = Array[int]([-12, -12, -12, 1, -12, 1, -12, 1, -10, 2, 3])
+text = Array[String](["You are a [color=cyan][b]robot[/b][/color] in a world where [color=red][i]no humans exist anymore[/i][/color]. Try moving with the [color=yellow][b]WASD[/b][/color] keys.
+Unfortunately, only one of your eyes works. Try turning it on by [color=yellow][b]clicking[/b][/color] the [b]left mouse button[/b].", "Using your eye drains [color=yellow]energy[/color], but it will slowly recharge when not in use.
+If your energy falls below [color=red][b]25%[/b][/color], your eye will shut down and cannot be used again until it reaches [color=lime][b]50%[/b][/color].
+Be careful not to drain your energy completely, or your systems will fail.", "The extermination of humans has resulted in a large number of [color=cyan]ghosts[/color].
+Some are simple souls that will follow and  [color=red][b]damage[/b][/color] you. Fortunately, they are weak to [color=yellow][b]light[/b][/color].
+Try using your eye to weaken and destroy them. Be careful not to get hit.", "Some spirits are more advanced and have learned to possess [color=cyan][b]robots[/b][/color].
+These possessed machines will not hesitate to attack you with [color=cyan][b]projectiles[/b][/color].
+Stay alert and keep your distance.", "Some entities are far more aggressive than others.
+This one will [color=red][b]launch itself[/b][/color] directly at you, closing the distance to attack you.
+Stay alert and be ready to avoid its attacks.", "Survive the [color=red][b]remnants of a ruined world[/b][/color] for as long as you can.
+Keep an eye on your energy.
+[color=cyan][b]Good luck.[/b][/color]"])
 
 [node name="Environment" type="Node" parent="." unique_id=1373799267]
 
@@ -127,3 +139,8 @@ enemy_node = NodePath("../../Enemies")
 level = NodePath("../..")
 
 [node name="Enemies" type="Node" parent="." unique_id=486084696]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=889007971]
+stream = ExtResource("6_12h4k")
+volume_db = 10.0
+autoplay = true
